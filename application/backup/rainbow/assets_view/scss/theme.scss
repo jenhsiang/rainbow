@@ -1,0 +1,102 @@
+.slicknav_menu {
+	display:none;
+	*zoom: 1;
+	position: absolute;
+	z-index: 9;
+	width: 100%;
+	font-size: 16px;
+	min-height: 50px;
+	.slicknav_btn {
+		float: left;
+		width: 30px;
+		height: 20px;
+		margin: 14px 22px 14px 22px;
+		.slicknav_icon {
+			display: inline-block;
+			width: 30px;
+			height: 3px;
+			position: relative;
+			background: $pink;
+			-webkit-transform-origin: 50% 50%;
+			transform-origin: 50% 50%;
+
+			&:before, &:after {
+				display: inline-block;
+				width: 30px;
+				height: 3px;
+				background: $pink;
+				position: absolute;
+				content: '';
+				z-index: 2;
+				-webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+				animation-fill-mode: forwards;
+				-webkit-animation-duration: .5s;
+				animation-duration: .5s;
+				-webkit-animation-timing-function: ease-out;
+				animation-timing-function: ease-out;
+			}
+			&:before{
+				top: -15px;
+				width: 20px;
+				-webkit-animation-name: slickAfter;
+				animation-name: slickAfter;
+			}
+			&:after{
+				top: 15px;
+				-webkit-animation-name: slickBefore;
+				animation-name: slickBefore;
+			}
+		}
+		.slicknav_icon_open{
+			background: transparent;
+			&:before, &:after{
+				width: 30px;
+				-webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+				animation-fill-mode: forwards;
+				-webkit-animation-duration: .5s;
+				animation-duration: .5s;
+				-webkit-animation-timing-function: ease-out;
+				animation-timing-function: ease-out;
+			}
+			&:before{
+				-webkit-animation-name: slickOpenBefore;
+				animation-name: slickOpenBefore;
+			}
+			&:after{
+				-webkit-animation-name: slickOpenAfter;
+				animation-name: slickOpenAfter;
+			}
+		}
+	}
+}
+.slicknav_menuAction{
+	@include transform(translateY(50px));/*54px*/
+  @include transition(transform .8s cubic-bezier(.79,.1,.49,1.43)0s);
+}
+.slicknav_nav {
+	overflow: hidden;
+	clear: both;
+	background:#fff;
+	margin-top: 49px;
+	padding:20px 0;
+	width: 50%;
+	a {
+		width: 100%;
+		float: left;
+		display: block;
+    color: $pink;
+    text-align: center;
+    line-height: 52px;
+		font-size: 18px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.js #menu {
+		display:none;
+	}
+
+	.js .slicknav_menu {
+		display:block;
+	}
+}
